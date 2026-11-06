@@ -1,0 +1,8 @@
+node_modules
+dist
+*.log
+
+# Evidências de revisão e versões antigas: ficam só nesta máquina
+*.zip
+REVISAO-*/
+_arquivo-*/
