@@ -169,7 +169,8 @@ button {
   font-weight: var(--display-weight);
 }
 .display {
-  font-size: var(--fs-display);
+  /* Os títulos aprovados são longos: a altura da tela também limita o tamanho. */
+  font-size: min(var(--fs-display), 15.5vh);
   line-height: 0.93;
   letter-spacing: -0.045em;
 }
@@ -287,14 +288,6 @@ button {
   border-radius: 50%;
   background: radial-gradient(circle at 34% 30%, #245a3e 0%, var(--c-green) 58%);
 }
-.hero__meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--muted);
-}
 .hero__title {
   flex: 1;
   display: flex;
@@ -322,25 +315,14 @@ button {
 .hero__word .ch {
   will-change: transform;
 }
-.hero__summary {
+
+.hero__sign {
   margin-top: clamp(0.75rem, 2vh, 1.25rem);
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  column-gap: var(--gutter);
   border-top: 1px solid var(--line);
   padding-top: 0.625rem;
-  font-size: clamp(0.9375rem, 0.8rem + 0.3vw, 1.125rem);
-  line-height: 1.3;
-}
-.hero__summary dt {
-  font-size: 0.8125rem;
-  color: var(--muted);
-}
-.hero__summary dd {
+  font-size: clamp(1rem, 0.8rem + 0.4vw, 1.25rem);
   font-weight: 500;
-}
-.hero__summary > :last-child {
-  text-align: right;
+  line-height: 1.3;
 }
 
 /* Objetos soltos em profundidade: os mesmos pontos de contato, antes de serem apresentados. */
@@ -475,11 +457,6 @@ button {
   display: grid;
   gap: 0.7em;
 }
-.conn__note {
-  margin-top: 1rem;
-  margin-left: auto;
-  max-width: 30em;
-}
 .conn__who {
   grid-column: 1 / -1;
   margin-top: var(--section);
@@ -489,11 +466,8 @@ button {
   row-gap: clamp(1.5rem, 3vw, 3rem);
   align-items: start;
 }
-.who__name {
-  grid-column: 1 / span 9;
-  font-size: var(--fs-big);
-  line-height: 0.95;
-  letter-spacing: -0.042em;
+.who__intro {
+  grid-column: 1 / span 10;
 }
 .who__text {
   grid-column: 2 / span 5;
@@ -509,28 +483,6 @@ button {
 }
 .who__mark .wordmark {
   margin-bottom: 0.75rem;
-}
-.craft {
-  grid-column: 1 / -1;
-  margin-top: var(--section);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  column-gap: 0.32em;
-  font-size: var(--fs-big);
-  line-height: 1.04;
-  letter-spacing: -0.042em;
-}
-.craft li:nth-child(even) {
-  color: var(--c-green);
-}
-.craft li:not(:last-child)::after {
-  content: ',';
-  color: var(--fg);
-}
-.craft__note {
-  grid-column: 7 / -1;
-  margin-top: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 /* ---------------------------- 03 Necessidades ---------------------------- */
@@ -1177,14 +1129,6 @@ button {
     display: none;
   }
 }
-.uni__sub {
-  font-family: var(--font-display);
-  font-weight: var(--display-weight);
-  font-size: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
-  line-height: 1.02;
-  letter-spacing: -0.032em;
-  margin-bottom: 0.625rem;
-}
 .uni__btn {
   display: block;
   width: 100%;
@@ -1226,6 +1170,14 @@ button {
 .uni__copy {
   padding: 1rem var(--margin) 2rem;
   position: relative;
+  font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.3125rem);
+  font-weight: 500;
+  line-height: 1.32;
+}
+.uni__close {
+  padding-block: var(--section);
+  max-width: 24em;
+  box-sizing: content-box;
 }
 .art {
   position: relative;
@@ -1602,19 +1554,30 @@ button {
   letter-spacing: -0.042em;
 }
 .nums {
-  margin-top: clamp(1rem, 4vh, 2.5rem);
+  margin-top: clamp(1rem, 3vh, 2rem);
   display: grid;
-  grid-template-columns: 2fr 7fr 3fr;
+  grid-template-columns: repeat(12, 1fr);
   column-gap: var(--gutter);
+  row-gap: clamp(0.75rem, 2.5vh, 1.5rem);
   align-items: end;
+}
+.num--a,
+.num--b {
+  grid-column: span 6;
+}
+.num--c {
+  grid-column: span 9;
+}
+.num--d {
+  grid-column: span 3;
 }
 .num {
   border-top: 2px solid var(--fg);
   padding-top: 0.5rem;
 }
 .num__big {
-  font-size: min(13.2vw, 33vh);
-  line-height: 0.92;
+  font-size: min(8.4vw, 17vh);
+  line-height: 0.96;
   letter-spacing: -0.06em;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -1652,30 +1615,6 @@ button {
 .motion .hours i.on {
   background: var(--c-char);
 }
-.terms {
-  margin-top: auto;
-  padding-top: clamp(1.25rem, 3vh, 2rem);
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  column-gap: var(--gutter);
-}
-.terms > div {
-  grid-column: span 6;
-  border-top: 1px solid var(--line);
-  padding-top: 0.5rem;
-}
-.terms dt {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--muted);
-}
-.terms dd {
-  font-family: var(--font-display);
-  font-weight: var(--display-weight);
-  font-size: clamp(1.5rem, 1rem + 2vw, 3.25rem);
-  letter-spacing: -0.035em;
-  line-height: 1.05;
-}
 
 /* ---------------------------- 07 Investimento ---------------------------- */
 
@@ -1702,7 +1641,27 @@ button {
 .recap span:nth-child(6) { left: 55%; top: 50%; }
 .recap span:nth-child(7) { left: 36%; top: 69%; }
 .recap span:nth-child(8) { left: 64%; top: 80%; }
+.opener__content--price .eyebrow {
+  margin-bottom: 0.5rem;
+}
+.price__title {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  font-size: min(5.4vw, 10vh);
+  line-height: 0.98;
+  letter-spacing: -0.042em;
+  max-width: 15em;
+}
+.price__label {
+  margin-top: auto;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
 .opener__content--price > .price,
+.opener__content--price > .price__title,
+.opener__content--price > .price__label,
 .opener__content--price > .eyebrow {
   opacity: clamp(0, calc((var(--p) - 0.68) * 4.4), 1);
 }
@@ -1713,13 +1672,6 @@ button {
 .price .fit {
   margin-left: -0.03em;
 }
-.price__per {
-  display: block;
-  font-size: clamp(2rem, 1rem + 4.2vw, 6rem);
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-top: clamp(0.75rem, 3vh, 2rem);
-}
 .close {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -1729,21 +1681,16 @@ button {
 .close .lead {
   grid-column: 1 / span 10;
 }
+.close .lead + .lead {
+  margin-top: 0.6em;
+}
 .reply {
   grid-column: 1 / -1;
-  margin-top: var(--section);
+  margin-top: clamp(1.5rem, 4vw, 3rem);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem 1.75rem;
-}
-.reply__title {
-  flex-basis: 100%;
-  font-size: var(--fs-big);
-  line-height: 0.96;
-  letter-spacing: -0.042em;
-  max-width: 11em;
-  margin-bottom: clamp(0.5rem, 2vw, 1.5rem);
 }
 .cta {
   display: inline-flex;
@@ -1768,29 +1715,14 @@ button {
 .cta:hover .cta__arrow {
   transform: translate(3px, -3px);
 }
-.reply__phone {
-  font-weight: 500;
-  font-variant-numeric: tabular-nums;
-}
-.ghost {
-  min-height: 2.75rem;
-  text-decoration: underline;
-  text-underline-offset: 0.25em;
-  color: var(--muted);
-}
-.ghost:hover {
-  color: var(--fg);
-}
 .sign {
   grid-column: 1 / -1;
   margin-top: var(--section);
   border-top: 1px solid var(--line);
   padding-top: 1rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
-  gap: 1rem;
-  font-size: 0.9375rem;
 }
 .sign .wordmark {
   width: 96px;
@@ -1914,6 +1846,9 @@ dialog.index[open] {
 }
 .motion:not(.ready) [data-split],
 .motion:not(.ready) .hero__title,
+.motion:not(.ready) .hero__sign,
+.motion:not(.ready) .hero__disc,
+.motion:not(.ready) .float,
 .motion:not(.ready) .hud__part {
   visibility: hidden;
 }
@@ -1999,31 +1934,14 @@ dialog.index[open] {
   .conn__admire {
     grid-column: 1 / -1;
   }
-  .who__name {
-    grid-column: 1 / -1;
-  }
   .who__text {
     grid-column: 1 / span 8;
   }
   .who__mark {
     grid-column: 1 / -1;
   }
-  .craft__note {
-    grid-column: 3 / -1;
-  }
-  .nums {
-    grid-template-columns: 1fr 2fr;
-    row-gap: 1.5rem;
-  }
-  .num--b {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  .num--c {
-    grid-column: 1 / -1;
-  }
-  .num__big {
-    font-size: min(17vw, 20vh);
+  .price__title {
+    font-size: var(--fs-big);
   }
   .model__title {
     font-size: var(--fs-big);
@@ -2079,12 +1997,12 @@ dialog.index[open] {
     margin: 0;
     line-height: 0.78;
   }
-  .hero__meta {
+  .hero__sign {
     grid-column: 2;
-    grid-row: 1;
-    flex-direction: column;
-    gap: 0;
-    font-size: 0.75rem;
+    grid-row: 4;
+    margin: 0;
+    font-size: 0.9375rem;
+    position: relative;
   }
   .hero__lead {
     grid-column: 2;
@@ -2093,18 +2011,6 @@ dialog.index[open] {
     position: relative;
     margin-bottom: 0.75rem;
     font-size: clamp(1.375rem, 6.4vw, 2.5rem);
-  }
-  .hero__summary {
-    grid-column: 2;
-    grid-row: 4;
-    margin: 0;
-    grid-template-columns: 1fr;
-    row-gap: 0.375rem;
-    font-size: 0.9375rem;
-    position: relative;
-  }
-  .hero__summary > :last-child {
-    text-align: left;
   }
   .hero__disc {
     right: -32vw;
@@ -2123,25 +2029,19 @@ dialog.index[open] {
   .float--phone {
     font-size: 2.05px;
     right: 28vw;
-    top: 13svh;
+    top: max(13svh, 6.5rem);
   }
   .float--label {
     z-index: -1;
     font-size: 2.2px;
     right: 4vw;
-    top: 15svh;
+    top: max(15svh, 6.75rem);
   }
 
   .opener__content--right .display {
     align-self: flex-start;
   }
-  .conn__note {
-    margin-left: 0;
-  }
   .who__text {
-    grid-column: 1 / -1;
-  }
-  .craft__note {
     grid-column: 1 / -1;
   }
   .asks {
@@ -2158,18 +2058,17 @@ dialog.index[open] {
     letter-spacing: -0.01em;
     line-height: 1.1;
   }
-  .num__big {
-    font-size: min(21vw, 16vh);
+  .num--a,
+  .num--b,
+  .num--c,
+  .num--d {
+    grid-column: 1 / -1;
   }
-  .num--a .num__big {
-    font-size: min(30vw, 18vh);
+  .num__big {
+    font-size: min(19vw, 10vh);
   }
   .num--c .num__big {
-    font-size: min(34vw, 22vh);
-  }
-  .terms > div {
-    grid-column: span 12;
-    margin-bottom: 0.75rem;
+    font-size: min(11.8vw, 10vh);
   }
   .index__facts {
     grid-template-columns: 1fr;
@@ -2181,9 +2080,6 @@ dialog.index[open] {
   .recap {
     font-size: 10.5vw;
   }
-  .price__per {
-    margin-top: 0.75rem;
-  }
 }
 
 /* Celular deitado: o título precisa caber inteiro em uma tela baixa. */
@@ -2191,20 +2087,9 @@ dialog.index[open] {
   .hero {
     padding-top: 2.75rem;
   }
-  .hero__meta {
-    font-size: 0.75rem;
-  }
   .hero__lead {
     font-size: 5.8vh;
     margin-bottom: 0.25rem;
-  }
-  .hero__summary {
-    margin-top: 0.25rem;
-    padding-top: 0.25rem;
-    font-size: 0.8125rem;
-  }
-  .hero__summary dt {
-    display: none;
   }
   .float--site,
   .float--phone {
@@ -2225,7 +2110,7 @@ dialog.index[open] {
   }
   .asks__texts {
     width: 46vw;
-    bottom: 2.75rem;
+    bottom: 3.25rem;
   }
   .ask__title {
     font-size: 11.5vh;
@@ -2240,11 +2125,14 @@ dialog.index[open] {
   .rail {
     bottom: 0;
   }
+  .price__title {
+    font-size: 9.5vh;
+  }
+  .opener__content--price .eyebrow {
+    margin-bottom: 0.125rem;
+  }
   .model__inner {
     min-height: 0;
-  }
-  .num__big {
-    font-size: 26vh;
   }
 }
 
@@ -2410,14 +2298,6 @@ html:not(.motion) .fronts__stage {
     max-width: none;
   }
   .hero__meta,
-  .hero__meta span {
-    display: block;
-  }
-  .hero__summary {
-    display: block;
-    margin-top: 5mm;
-    border: 0;
-  }
   .hero__summary > div {
     text-align: left !important;
   }
@@ -2452,20 +2332,11 @@ html:not(.motion) .fronts__stage {
   }
   .ask__title,
   .mod h3,
-  .uni__sub {
-    font-size: 18pt !important;
-    line-height: 1.1;
-  }
   .display,
   .who__name,
   .fronts__title,
   .model__title,
   .reply__title,
-  .craft {
-    font-size: 24pt !important;
-    line-height: 1.05 !important;
-    max-width: none !important;
-  }
   .display br {
     display: none;
   }
@@ -2475,10 +2346,6 @@ html:not(.motion) .fronts__stage {
   .fit {
     font-size: 40pt !important;
   }
-  .price__per {
-    font-size: 18pt !important;
-    margin: 1mm 0 6mm;
-  }
   .lead {
     font-size: 14pt !important;
   }
@@ -2487,10 +2354,6 @@ html:not(.motion) .fronts__stage {
   .close,
   .reply,
   .nums,
-  .terms {
-    display: block !important;
-    margin-top: 6mm !important;
-  }
   .num {
     border: 0;
     margin-bottom: 3mm;
@@ -2502,13 +2365,6 @@ html:not(.motion) .fronts__stage {
   .num__cap {
     display: inline;
     margin-left: 3mm;
-  }
-  .terms > div {
-    border: 0;
-    margin-bottom: 3mm;
-  }
-  .terms dd {
-    font-size: 14pt;
   }
   .uni,
   .uni__item,
@@ -2531,6 +2387,31 @@ html:not(.motion) .fronts__stage {
     font-size: 20pt !important;
     padding: 0 !important;
     border: 0;
+  }
+  #compromisso {
+    break-before: page;
+  }
+  .uni__item,
+  .reply,
+  .sign {
+    break-inside: avoid;
+  }
+  .opener__lede {
+    margin: 3mm 0 4mm !important;
+    max-width: none;
+  }
+  .reply {
+    margin-top: 5mm !important;
+  }
+  .sign {
+    margin-top: 5mm !important;
+    padding-top: 2mm;
+  }
+  #investimento .body {
+    padding-bottom: 0 !important;
+  }
+  .mod::after {
+    display: none;
   }
   .wordmark {
     width: 24mm;

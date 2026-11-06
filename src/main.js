@@ -29,7 +29,7 @@ function fitOne(el, target, axis = 'x', max = Infinity) {
 }
 
 function fitAll() {
-  $$('[data-fit]').forEach((el) => fitOne(el, el.parentElement.clientWidth, 'x', innerHeight * 0.56))
+  $$('[data-fit]').forEach((el) => fitOne(el, el.parentElement.clientWidth, 'x', innerHeight * 0.42))
   const word = $('[data-hero-word]')
   const hero = $('.hero')
   if (getComputedStyle(word).writingMode.startsWith('vertical')) {
@@ -88,9 +88,9 @@ function buildPieces() {
   // Marketing: os pontos saem de uma massa uniforme e se separam em públicos.
   const dots = $('[data-dots]')
   const groups = [
-    { x: 530, y: 150, r: 112, name: 'Quem compra' },
-    { x: 850, y: 310, r: 104, name: 'Quem revende' },
-    { x: 560, y: 450, r: 92, name: 'Quem consome' },
+    { x: 530, y: 150, r: 112, name: 'Público A' },
+    { x: 850, y: 310, r: 104, name: 'Público B' },
+    { x: 560, y: 450, r: 92, name: 'Público C' },
   ]
   let html = ''
   let s = 91
@@ -322,14 +322,14 @@ function runIntro() {
   split.chars.forEach((ch) => ch.setAttribute('aria-hidden', 'true'))
   const spoken = document.createElement('span')
   spoken.className = 'vh'
-  spoken.textContent = 'Perboni'
+  spoken.textContent = 'PERBONI.'
   word.append(spoken)
   fitAll()
   measure()
 
   root.classList.add('ready')
   const floats = $$('.float, .hero__disc')
-  const rest = ['.hero__meta', '.hero__lead', '.hero__summary', '.hud__part']
+  const rest = ['.hero__lead', '.hero__sign', '.hud__part']
 
   // As letras chegam fora de ordem e se reorganizam até formar o nome. Cerca de 1,2 s, e qualquer gesto encerra.
   const from = [
@@ -421,8 +421,8 @@ function initReveals() {
   const cells = $$('.hours i')
   ScrollTrigger.create({
     trigger: '[data-hours]',
-    start: 'top 92%',
-    end: 'top 45%',
+    start: 'top 98%',
+    end: 'top 72%',
     scrub: 0.3,
     onUpdate: (self) => {
       const n = Math.round(self.progress * cells.length)
@@ -523,7 +523,7 @@ function initUniverses() {
   })
 }
 
-/* ---------------------------------- Resumo, impressão e navegação ---------------------------------- */
+/* ---------------------------------- Resumo e navegação ---------------------------------- */
 
 function initChrome() {
   const dialog = $('dialog.index')
@@ -549,10 +549,6 @@ function initChrome() {
       goTo(a.dataset.goto)
     })
   })
-
-  const printBtn = $('[data-print]')
-  if (window.self !== window.top) printBtn.hidden = true
-  printBtn.addEventListener('click', () => window.print())
 
   $('.skip').addEventListener('click', (e) => {
     e.preventDefault()

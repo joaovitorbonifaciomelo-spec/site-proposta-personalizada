@@ -15,8 +15,8 @@ então funciona em subpasta. A página tem `noindex`: não aparece em buscadores
 ## Onde mexer
 
 - **Texto:** todo em `index.html`, na ordem de leitura.
-- **Valor e condições:** em `#investimento`, `#modelo`, no resumo (`.index__facts`) e na abertura (`.hero__summary`).
-- **WhatsApp:** link e número em `.reply`.
+- **Valor e condições:** em `#investimento`, `#modelo`, no resumo (`.index__facts`) e no encerramento (`.close`).
+- **WhatsApp:** link e número em `.cta`.
 - **Cores:** carvão, off-white, verde profundo e cinza suave, no início de `src/style.css`.
 
 ## Ligar a Forma DJR Display
@@ -44,5 +44,5 @@ Se a licença vier de outra fonte (DJR ou Type Network), coloque os `.woff2` em 
 
 ## Versões anteriores
 
-`_arquivo-v1/` e `_arquivo-rev02/` guardam o código das versões anteriores, como referência. Essas pastas não entram no build
+`_arquivo-v1/`, `_arquivo-rev02/` e `_arquivo-rev03/` guardam o código das versões anteriores, como referência. Essas pastas não entram no build
 e não devem ser publicadas: a da v1 contém imagens de outros clientes.
